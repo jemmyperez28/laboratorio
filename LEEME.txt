@@ -1,0 +1,19 @@
+Version Usada PHP : 7
+Version MySQL : 5 , pero sirve con cualquiera.
+----------------------------------------------
+El archivo de conexion a la base de datos se encuentra en : 
+laboratorio/database.php
+----------------------------------------------
+Al realizar alguna actualizacion en los experimentos u horarios , es necesario
+refrescar la tabla temporal_lab (borrar y crear otra) en la base de datos:
+
+###BORRANDO DATOS DE TABLA
+delete from temporal_lab1;
+#### INSERTANDO TODAS LAS POSIBILIDADES DE LOS HORARIOS EN LA TABLA TEMPORAL_LA
+insert into temporal_lab1 (codhora , codlab, codexp)
+select horas.codhor , laboratorio.codlab ,experimento.codexp
+from horas 
+cross join laboratorio
+cross join experimento ;
+##VERIFICANDO
+select * from temporal_lab1;
